@@ -1,16 +1,12 @@
-// =====================================================
-// 1. SELECCIÓN DE ELEMENTOS DEL DOM
-// =====================================================
-
-// getElementById: selecciona un único elemento por su id
+// Obtener los elementos por su ID
 const titulo = document.getElementById('titulo');
 const descripcion = document.getElementById('descripcion');
 const contenedorArticulos = document.getElementById('contenedor-articulos');
 const contenedorApi = document.getElementById('contenedor-api');
 const infoWindow = document.getElementById('info-window');
 
-// querySelector: selecciona el PRIMER elemento que coincide con un selector CSS
-const hero = document.querySelector('#hero');
+// Obtener el primer elemento que se encuntre con querySelector con el identificador indicado
+const hero = document.querySelector('#titulo-principal');
 const listaPedidos = document.querySelector('.lista');
 const btnTexto = document.querySelector('#btn-texto');
 const btnEstilo = document.querySelector('#btn-estilo');
@@ -18,53 +14,36 @@ const btnAgregar = document.querySelector('#btn-agregar');
 const btnEliminar = document.querySelector('#btn-eliminar');
 const btnApi = document.querySelector('#btn-api');
 
-// querySelectorAll: selecciona TODOS los elementos que coinciden (NodeList)
+// Obtener todos los elemento que se encuntren con querySelectorAll con el identificador indicado
 const itemsLista = document.querySelectorAll('.item');
 
-// Mostrar los elementos seleccionados en consola
-console.log('Título:', titulo);
-console.log('Descripción:', descripcion);
-console.log('Hero:', hero);
-console.log('Lista de pedidos:', listaPedidos);
-console.log('Items de la lista:', itemsLista);
-
-
-// =====================================================
-// 2. NAVEGACIÓN JERÁRQUICA DEL DOM
-// =====================================================
-
+// Jerarquia en consola del DOM
 console.log('Nodo padre de la lista:', listaPedidos.parentElement);
 console.log('Hijos de la lista:', listaPedidos.children);
 console.log('Primer hijo de la lista:', listaPedidos.firstElementChild);
 console.log('Último hijo de la lista:', listaPedidos.lastElementChild);
 
 
-// =====================================================
-// 3. MODIFICAR TEXTO (textContent e innerHTML)
-// =====================================================
-
+// MOdificación del texto al hacer click escuchando este evento
 btnTexto.addEventListener('click', () => {
-    // textContent: cambia solo el texto plano (no interpreta etiquetas HTML)
     titulo.textContent = '¡Únete a las compras conjuntas de Caldas!';
 
-    // innerHTML: permite insertar etiquetas HTML dentro del elemento
+    // Con el inner se pueden insertar etiquetas HTML dentro del elemento que se vaya a settear
     descripcion.innerHTML = 'Ahorra <strong>hasta un 30%</strong> comprando materias primas junto a otros negocios.';
 });
 
 
-// =====================================================
-// 4. MODIFICAR ESTILOS (style y classList)
-// =====================================================
+// Modificación de Estilos
 
 /*
- * ¿Cuál es la mejor práctica?
+ * ¿Cuál es la mejor práctica? - R:
  * Es mejor usar classList (add, remove, toggle) que la propiedad style.
  * Con classList los estilos quedan definidos en el archivo CSS, así se
  * mantiene separada la presentación de la lógica, se pueden reutilizar
  * y son más fáciles de mantener. La propiedad style escribe estilos en
  * línea directamente en el HTML, lo que mezcla responsabilidades y es más
- * difícil de sobrescribir. style solo conviene para valores dinámicos
- * (por ejemplo, un ancho calculado con JavaScript).
+ * difícil de separar las responsabilidades. Básicamente style solo conviene para valores dinámicos
+ * Por ejemplo definir un ancho fijo con JavaScript en un momento fijo
  */
 
 let estilosActivos = false;
@@ -72,14 +51,13 @@ let estilosActivos = false;
 btnEstilo.addEventListener('click', () => {
     estilosActivos = !estilosActivos;
 
-    // Propiedad style: estilo en línea
     titulo.style.color = estilosActivos ? '#F5A623' : '';
 
-    // classList.add() y classList.remove()
+    // classList.add() y classList.remove() - Añair o remover estilos del style.css por medio de clases obtenidas del DOM
     if (estilosActivos) {
-        hero.classList.add('hero-alt');
+        hero.classList.add('titulo-principal-alt');
     } else {
-        hero.classList.remove('hero-alt');
+        hero.classList.remove('titulo-principal-alt');
     }
 
     // classList.toggle(): agrega la clase si no está, la quita si está
@@ -87,10 +65,9 @@ btnEstilo.addEventListener('click', () => {
 });
 
 
-// =====================================================
-// 5. CREAR Y ELIMINAR ELEMENTOS DINÁMICAMENTE
-// =====================================================
+// Crear y eliminar elementos
 
+// Contador para identificador de tarjetas en HTML
 let contadorArticulos = 0;
 
 btnAgregar.addEventListener('click', () => {
@@ -116,16 +93,14 @@ btnEliminar.addEventListener('click', () => {
     const ultimo = contenedorArticulos.lastElementChild;
 
     if (ultimo) {
-        ultimo.remove(); // También sirve: contenedorArticulos.removeChild(ultimo)
+        ultimo.remove();
     } else {
         console.log('No hay artículos para eliminar');
     }
 });
 
 
-// =====================================================
-// 6. OBJETO WINDOW (innerWidth, scrollY, location.href)
-// =====================================================
+// Window 
 
 console.log('URL actual:', window.location.href);
 
@@ -140,19 +115,17 @@ window.addEventListener('scroll', mostrarInfoWindow);
 mostrarInfoWindow();
 
 
-// =====================================================
-// 7. CONSUMO DE UNA API PÚBLICA CON FETCH
-// =====================================================
-
+// Consumo de API de poductos
 const URL_API = 'https://dummyjson.com/products?limit=4';
 
 async function cargarProductos() {
     contenedorApi.textContent = 'Cargando productos...';
 
+    // Try Catch para el manejo de errores
     try {
         const respuesta = await fetch(URL_API);
 
-        // fetch no lanza error por códigos HTTP como 404 o 500, se valida aquí
+        // Válidar que la respuesta a la petició a la API sea correcta, sino lanzar error
         if (!respuesta.ok) {
             throw new Error(`Error HTTP: ${respuesta.status}`);
         }
@@ -174,7 +147,7 @@ async function cargarProductos() {
             contenedorApi.appendChild(tarjeta);
         });
     } catch (error) {
-        // Manejo de errores: sin conexión, API caída, respuesta inválida, etc.
+        // Manejo de errores: sin conexión, API caída, respuesta inválida, etc...
         console.error('Error al consumir la API:', error);
         contenedorApi.innerHTML = '<p class="mensaje-error">No se pudieron cargar los productos. Intenta de nuevo.</p>';
     }

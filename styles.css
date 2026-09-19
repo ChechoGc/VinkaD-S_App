@@ -1,4 +1,4 @@
-/* ===== Estilos generales ===== */
+/*  Resetteo de Estilos  */
 * {
     box-sizing: border-box;
 }
@@ -10,7 +10,7 @@ body {
     color: #1A2E4A;
 }
 
-/* ===== Encabezado ===== */
+/* Encabezado */
 .header {
     background: #1A2E4A;
     padding: 16px 24px;
@@ -42,8 +42,9 @@ body {
     color: #F5A623;
 }
 
-/* ===== Hero ===== */
-.hero {
+
+
+.titulo-principal {
     background: #0F1E30;
     color: #FFFFFF;
     padding: 56px 24px;
@@ -51,7 +52,7 @@ body {
     transition: background 0.3s;
 }
 
-.hero h1 {
+.titulo-principal h1 {
     margin: 0 0 16px;
     font-size: 36px;
 }
@@ -70,11 +71,11 @@ body {
 }
 
 /* Clase que se agrega/quita con classList desde JavaScript */
-.hero-alt {
+.titulo-principal-alt {
     background: #0B2A20;
 }
 
-/* ===== Botones ===== */
+/* Estilo de Botones */
 .acciones {
     display: flex;
     flex-wrap: wrap;
@@ -106,7 +107,7 @@ body {
     background: #4ADE80;
 }
 
-/* ===== Secciones ===== */
+/* Estilo Secciones */
 .seccion {
     max-width: 1000px;
     margin: 0 auto;
@@ -123,13 +124,13 @@ body {
     border-radius: 4px;
 }
 
-/* Clase que se alterna con classList.toggle() */
+/* Clase que se alterna con classList.toggle */
 .resaltado {
     background: #FEF3C7;
     border-left: 4px solid #F5A623;
 }
 
-/* Contenedor de tarjetas (artículos y productos de la API) */
+/* Estilos de Contenedor de tarjetas (Traidos desde la API) */
 .contenedor {
     display: flex;
     flex-wrap: wrap;
@@ -167,7 +168,7 @@ body {
     color: #DC2626;
 }
 
-/* ===== Pie de página ===== */
+/* Estilos del Footer */
 .footer {
     background: #0F1E30;
     color: rgba(255, 255, 255, 0.5);
