@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINCA D&S - Inicio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado con logo y navegación -->
+    <header class="header">
+        <div class="logo">VINCA <span>D&S</span></div>
+        <nav class="nav">
+            <a href="#">Inicio</a>
+            <a href="#">Marketplace</a>
+            <a href="#">Compras Conjuntas</a>
+            <a href="#">Cómo Funciona</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero: título y párrafo principal -->
+        <section class="hero" id="hero">
+            <h1 id="titulo">Compra, vende y ahorra más en Caldas</h1>
+            <p id="descripcion" class="descripcion">
+                El único mercado local donde también puedes unirte a compras conjuntas
+                con otros negocios y acceder a precios de mayorista.
+            </p>
+            <!-- Aquí se muestran propiedades del objeto window en tiempo real -->
+            <p id="info-window" class="info-window"></p>
+        </section>
+
+        <!-- Botones que disparan los eventos -->
+        <section class="acciones">
+            <button id="btn-texto" class="btn">Cambiar texto</button>
+            <button id="btn-estilo" class="btn">Cambiar estilos</button>
+            <button id="btn-agregar" class="btn">Agregar artículo</button>
+            <button id="btn-eliminar" class="btn btn-secundario">Eliminar último</button>
+            <button id="btn-api" class="btn btn-verde">Cargar productos (API)</button>
+        </section>
+
+        <!-- Lista con mínimo tres elementos -->
+        <section class="seccion">
+            <h2>Pedidos conjuntos por cerrar</h2>
+            <ul id="lista-pedidos" class="lista">
+                <li class="item">Harina de trigo 50kg · Molinos Manizales</li>
+                <li class="item">Azúcar blanca 50kg · Distribuidora Caldas</li>
+                <li class="item">Café verde 100kg · Cooperativa Chinchiná</li>
+            </ul>
+        </section>
+
+        <!-- Contenedor donde se agregan elementos dinámicamente -->
+        <section class="seccion">
+            <h2>Artículos recientes</h2>
+            <div id="contenedor-articulos" class="contenedor"></div>
+        </section>
+
+        <!-- Contenedor donde se muestran los datos de la API -->
+        <section class="seccion">
+            <h2>Productos desde la API</h2>
+            <div id="contenedor-api" class="contenedor"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 VINCA D&S · Manizales, Caldas, Colombia</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
